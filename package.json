@@ -1,0 +1,23 @@
+{
+  "name": "overwatch-hero",
+  "version": "0.0.1",
+  "author": "Edixon Piña",
+  "license": "UNLISENCED",
+  "scripts": {
+    "sass-build": "",
+    "sass-watch": "",
+    "build": "",
+    "serve": "live-server public --host=localhost --port=80",
+    "dev": "yarn",
+    "start": "yarn serve"
+  },
+  "devDependencies": {
+    "concurrently": "^6.2.0",
+    "live-server": "^1.2.1",
+    "sass": "^1.35.1"
+  },
+  "engines": {
+    "node": "^14.16.0",
+    "yarn": "^1.22.0"
+  }
+}
