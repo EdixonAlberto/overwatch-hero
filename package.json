@@ -4,11 +4,11 @@
   "author": "Edixon Piña",
   "license": "UNLISENCED",
   "scripts": {
-    "sass-build": "",
-    "sass-watch": "",
-    "build": "",
-    "serve": "live-server public --host=localhost --port=80",
-    "dev": "yarn",
+    "sass-watch": "sass --watch src/scss/main.scss:public/static/css/main.css",
+    "sass-build": "sass --style=compressed --no-source-map src/scss/main.scss:public/static/css/main.css",
+    "build": "yarn sass-build",
+    "serve": "live-server public --host=localhost --port=5500",
+    "dev": "concurrently \"yarn sass-watch\" \"yarn start\"",
     "start": "yarn serve"
   },
   "devDependencies": {

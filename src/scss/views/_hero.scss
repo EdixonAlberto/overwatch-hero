@@ -1,0 +1,41 @@
+.hero {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+
+  video {
+    width: 100%;
+    height: 600px;
+    position: absolute;
+    top: 0;
+    object-fit: cover;
+    opacity: 0.8;
+  }
+
+  .hero-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 265px 44px 133px 93px 1fr);
+
+    grid-template-areas:
+      'top'
+      'countdown'
+      'selections'
+      'heroes'
+      'select';
+
+    .selections {
+      display: grid;
+      grid-area: selections;
+      grid-template-columns: repeat(6, 110px);
+      grid-template-rows: 1fr;
+      justify-content: center;
+      background: rgba($color: red, $alpha: 0.2);
+    }
+  }
+}

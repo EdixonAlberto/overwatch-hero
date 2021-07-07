@@ -1,0 +1,11 @@
+* {
+  outline: 1px solid #8e5ed6;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+@import 'variables';
+@import 'views/hero';
