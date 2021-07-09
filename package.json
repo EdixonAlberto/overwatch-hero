@@ -15,9 +15,5 @@
     "concurrently": "^6.2.0",
     "live-server": "^1.2.1",
     "sass": "^1.35.1"
-  },
-  "engines": {
-    "node": "^12.18.0",
-    "yarn": "^1.22.0"
   }
 }
