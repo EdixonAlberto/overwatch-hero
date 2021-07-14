@@ -23,9 +23,9 @@
     height: 100%;
     position: absolute;
     top: 0;
-    object-fit: cover;
+    object-fit: fill;
     object-position: 100%;
-    opacity: 0.5;
+    opacity: 0.6;
     opacity: 0;
   }
 
@@ -36,7 +36,7 @@
 
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(3, 313px 49px 162px 110px 1fr);
+    grid-template-rows: repeat(3, 44% 7.8% 22% 15% 1fr);
     grid-template-areas:
       'top'
       'countdown'
@@ -47,7 +47,6 @@
     .selections {
       display: grid;
       grid-area: selections;
-
       grid-template-columns: repeat(6, 95px);
       grid-template-rows: 1fr;
       column-gap: 33px;
@@ -66,10 +65,33 @@
         .hero-avatar {
           width: 80%;
           height: 80%;
-          background-repeat: no-repeat;
-          background-size: 70%;
-          background-position: 100%;
+
+          @include back-img('', 70%);
           clip-path: polygon(98% 0, 98% 74%, 65% 93%, 30% 76%, 29% 0);
+
+          &[avatar='bastion'] {
+            @include img-url('selected-heroes/bastion.png');
+          }
+
+          &[avatar='mercy'] {
+            @include img-url('selected-heroes/mercy.png');
+          }
+
+          &[avatar='winston'] {
+            @include img-url('selected-heroes/winston.png');
+          }
+
+          &[avatar='widowmaker'] {
+            @include img-url('selected-heroes/widowmaker.png');
+          }
+
+          &[avatar='genji'] {
+            @include img-url('selected-heroes/genji.png');
+          }
+
+          &[avatar='hanzo'] {
+            @include img-url('selected-heroes/hanzo.png');
+          }
         }
 
         p {
@@ -84,29 +106,72 @@
 
           font-style: italic;
         }
+      }
+    }
 
-        &:nth-child(1) .hero-avatar {
-          background-image: url('../img/selected-heroes/bastion.png');
+    .heroes {
+      display: grid;
+      grid-area: heroes;
+      // 7 6 5 5
+      grid-template-columns: 25% 23% 23% 20%;
+      grid-template-rows: (1fr);
+      column-gap: 40px;
+      justify-content: space-between;
+      padding: 0 7%;
+
+      .col {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        grid-template-rows: 1fr;
+        column-gap: 4px;
+        justify-content: space-between;
+        padding: 20px 0;
+
+        & > div {
+          background-color: $color-black;
+          @include back-img('', cover) {
+            background-position: top;
+          }
+          transform: skewX(-15deg);
+          transform-origin: bottom left;
+          box-shadow: inset 0 2px 0 0 $color-white, inset 0 -1px 0 0 $color-white;
+          border: none;
+          border-radius: 3px;
+          transition: all 0.15s ease-in-out;
+
+          &:hover {
+            transform: scale(1.15) skewX(-15deg) translate(-2px, 2px);
+            box-shadow: 0 0 0 3px $color-white;
+            z-index: 1;
+          }
         }
 
-        &:nth-child(2) .hero-avatar {
-          background-image: url('../img/selected-heroes/mercy.png');
+        [hero='genji'] {
+          @include img-url('heroes/genji.png');
         }
 
-        &:nth-child(3) .hero-avatar {
-          background-image: url('../img/selected-heroes/winston.png');
+        [hero='mccree'] {
+          @include img-url('heroes/mccree.png');
         }
 
-        &:nth-child(4) .hero-avatar {
-          background-image: url('../img/selected-heroes/widowmaker.png');
+        [hero='pharah'] {
+          @include img-url('heroes/pharah.png');
         }
 
-        &:nth-child(5) .hero-avatar {
-          background-image: url('../img/selected-heroes/genji.png');
+        [hero='reaper'] {
+          @include img-url('heroes/reaper.png');
         }
 
-        &:nth-child(6) .hero-avatar {
-          background-image: url('../img/selected-heroes/hanzo.png');
+        [hero='soldier-76'] {
+          @include img-url('heroes/soldier-76.png');
+        }
+
+        [hero='sombra'] {
+          @include img-url('heroes/sombra.png');
+        }
+
+        [hero='tracer'] {
+          @include img-url('heroes/tracer.png');
         }
       }
     }

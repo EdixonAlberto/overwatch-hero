@@ -1,0 +1,13 @@
+@mixin back-img($img: '', $size: contain) {
+  @if ($img != '') {
+    background-image: url('../img/' + $img);
+  }
+  background-size: $size;
+  background-position: 100%;
+  background-repeat: no-repeat;
+  @content;
+}
+
+@mixin img-url($img) {
+  background-image: url('../img/' + $img);
+}
