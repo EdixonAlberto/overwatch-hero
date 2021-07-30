@@ -1,0 +1,11 @@
+$name-font: 'BigNoodleToo';
+
+@font-face {
+  src: url($path-fonts + '#{$name-font}.ttf') format('truetype');
+  font-family: $name-font;
+  font-weight: 400;
+}
+
+body {
+  font-family: $name-font, sans-serif;
+}
