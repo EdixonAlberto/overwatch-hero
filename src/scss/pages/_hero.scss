@@ -1,22 +1,16 @@
+@import '../utils/images';
+
 .hero {
+  @include url-img('bastion.jpg');
+
   width: 100vw;
   height: 100vh;
   position: relative;
   overflow: hidden;
 
-  background-image: url('../img/bastion.jpg');
   background-size: cover;
   background-position: 100%;
   background-repeat: no-repeat;
-
-  &::before {
-    content: '';
-    width: 100%;
-    height: 100%;
-    position: absolute;
-
-    background-color: rgba($color: #000000, $alpha: 0.4);
-  }
 
   video {
     width: 100%;
@@ -29,69 +23,44 @@
     opacity: 0;
   }
 
-  .hero-container {
+  main {
     width: 100%;
     height: 100%;
     position: absolute;
 
     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(3, 44% 7.8% 22% 15% 1fr);
     grid-template-areas:
       'top'
       'countdown'
       'selections'
       'heroes'
       'select';
+    grid-template-rows: repeat(3, 44% 7.8% 22% 15% 1fr);
+    grid-template-columns: 1fr;
 
-    .selections {
+    section.selected-hero {
       display: grid;
       grid-area: selections;
-      grid-template-columns: repeat(6, 95px);
       grid-template-rows: 1fr;
+      grid-template-columns: repeat(6, 95px);
       column-gap: 33px;
       align-items: center;
       justify-content: center;
 
-      .selection {
+      .selected {
+        @include back-img('hero-portrait.png');
+
         height: 110px;
         margin-top: -20px;
-
-        background-image: url('../img/hero-portrait.png');
-        background-size: contain;
-        background-position: 100%;
         text-align: center;
 
-        .hero-avatar {
-          width: 80%;
-          height: 80%;
-
+        [avatar] {
           @include back-img('', 70%);
+
+          width: 81%;
+          height: 83%;
+
           clip-path: polygon(98% 0, 98% 74%, 65% 93%, 30% 76%, 29% 0);
-
-          &[avatar='bastion'] {
-            @include img-url('selected-heroes/bastion.png');
-          }
-
-          &[avatar='mercy'] {
-            @include img-url('selected-heroes/mercy.png');
-          }
-
-          &[avatar='winston'] {
-            @include img-url('selected-heroes/winston.png');
-          }
-
-          &[avatar='widowmaker'] {
-            @include img-url('selected-heroes/widowmaker.png');
-          }
-
-          &[avatar='genji'] {
-            @include img-url('selected-heroes/genji.png');
-          }
-
-          &[avatar='hanzo'] {
-            @include img-url('selected-heroes/hanzo.png');
-          }
         }
 
         p {
@@ -109,31 +78,31 @@
       }
     }
 
-    .heroes {
-      display: grid;
-      grid-area: heroes;
-      // 7 6 5 5
-      grid-template-columns: 25% 23% 23% 20%;
-      grid-template-rows: (1fr);
-      column-gap: 40px;
-      justify-content: space-between;
+    section.selection-hero {
       padding: 0 7%;
 
-      .col {
-        display: grid;
-        grid-template-columns: repeat(7, 1fr);
-        grid-template-rows: 1fr;
-        column-gap: 4px;
-        justify-content: space-between;
+      display: grid;
+      grid-area: heroes;
+      grid-template-rows: (1fr);
+      grid-template-columns: 25% 23% 23% 20%;
+      column-gap: 40px;
+      justify-content: space-between;
+
+      .selection {
         padding: 20px 0;
 
-        & > div {
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-columns: repeat(7, 1fr);
+        column-gap: 4px;
+        justify-content: space-between;
+
+        [hero] {
           background-color: $color-black;
-          @include back-img('', cover) {
-            background-position: top;
-          }
+
           transform: skewX(-15deg);
           transform-origin: bottom left;
+
           box-shadow: inset 0 2px 0 0 $color-white, inset 0 -1px 0 0 $color-white;
           border: none;
           border-radius: 3px;
@@ -144,36 +113,21 @@
             box-shadow: 0 0 0 3px $color-white;
             z-index: 1;
           }
-        }
 
-        [hero='genji'] {
-          @include img-url('heroes/genji.png');
-        }
-
-        [hero='mccree'] {
-          @include img-url('heroes/mccree.png');
-        }
-
-        [hero='pharah'] {
-          @include img-url('heroes/pharah.png');
-        }
-
-        [hero='reaper'] {
-          @include img-url('heroes/reaper.png');
-        }
-
-        [hero='soldier-76'] {
-          @include img-url('heroes/soldier-76.png');
-        }
-
-        [hero='sombra'] {
-          @include img-url('heroes/sombra.png');
-        }
-
-        [hero='tracer'] {
-          @include img-url('heroes/tracer.png');
+          @include back-img('', cover) {
+            background-position: top;
+          }
         }
       }
     }
+  }
+
+  &::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+
+    background-color: rgba($color: #000000, $alpha: 0.4);
   }
 }

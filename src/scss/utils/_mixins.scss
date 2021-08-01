@@ -1,6 +1,6 @@
 @mixin back-img($img: '', $size: contain) {
   @if ($img != '') {
-    background-image: url('../img/' + $img);
+    background-image: url($path-img + $img);
   }
   background-size: $size;
   background-position: 100%;
@@ -8,6 +8,6 @@
   @content;
 }
 
-@mixin img-url($img) {
-  background-image: url('../img/' + $img);
+@mixin url-img($img) {
+  background-image: url($path-img + $img);
 }

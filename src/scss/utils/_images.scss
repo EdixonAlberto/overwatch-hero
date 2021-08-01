@@ -1,0 +1,53 @@
+// AVATAR
+[avatar='bastion'] {
+  @include url-img('selected-heroes/bastion.png');
+}
+
+[avatar='mercy'] {
+  @include url-img('selected-heroes/mercy.png');
+}
+
+[avatar='winston'] {
+  @include url-img('selected-heroes/winston.png');
+}
+
+[avatar='widowmaker'] {
+  @include url-img('selected-heroes/widowmaker.png');
+}
+
+[avatar='genji'] {
+  @include url-img('selected-heroes/genji.png');
+}
+
+[avatar='hanzo'] {
+  @include url-img('selected-heroes/hanzo.png');
+}
+
+// HERO
+[hero='genji'] {
+  @include url-img('heroes/genji.png');
+}
+
+[hero='mccree'] {
+  @include url-img('heroes/mccree.png');
+}
+
+[hero='pharah'] {
+  @include url-img('heroes/pharah.png');
+}
+
+[hero='reaper'] {
+  @include url-img('heroes/reaper.png');
+}
+
+[hero='soldier-76'] {
+  @include url-img('heroes/soldier-76.png');
+}
+
+[hero='sombra'] {
+  @include url-img('heroes/sombra.png');
+}
+
+[hero='tracer'] {
+  @include url-img('heroes/tracer.png');
+}
