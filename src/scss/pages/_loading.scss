@@ -1,0 +1,154 @@
+.loading-container {
+  width: 100%;
+  height: 100vh;
+
+  display: grid;
+  align-items: center;
+  justify-items: center;
+
+  background-color: #fbe9e3;
+}
+
+@mixin animation-rotation($rotate-init: 0, $delay: false) {
+  $duration: 2;
+
+  @keyframes rotation#{$rotate-init} {
+    from {
+      transform: rotate($rotate-init);
+    }
+    to {
+      transform: rotate(360deg + $rotate-init);
+    }
+  }
+
+  animation-name: rotation#{$rotate-init};
+  animation-duration: #{$duration}s;
+  animation-iteration-count: infinite;
+  // animation-fill-mode: both;
+  animation-timing-function: ease;
+
+  @if ($delay) {
+    animation-delay: #{$duration + 0.2}s;
+  }
+}
+
+@mixin animation-hexagon {
+  $duration: 2.5;
+
+  @for $i from 1 through 7 {
+    [hexagon='#{$i}'] {
+      @keyframes hexagon#{$i} {
+        from {
+          opacity: 1;
+          transform: rotate(-90deg) scale(1);
+        }
+        to {
+          opacity: 0;
+          transform: rotate(-90deg) scale(0.2) translateY(20px);
+        }
+      }
+
+      animation-name: hexagon#{$i};
+      animation-duration: #{$duration}s;
+      animation-delay: #{$duration * ($i - 7) * 0.1}s;
+
+      animation-iteration-count: infinite;
+      animation-fill-mode: both;
+      animation-timing-function: ease;
+    }
+  }
+}
+
+.loading {
+  @include animation-hexagon;
+
+  width: 150px;
+  height: 150px;
+  position: relative;
+
+  display: grid;
+  grid-template-rows: 20% 20% 20%;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-items: center;
+  align-content: center;
+
+  .row {
+    margin-right: 20px;
+    display: grid;
+    position: relative;
+
+    &:nth-child(1),
+    &:nth-child(3) {
+      grid-template-rows: 1fr;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    &:nth-child(2) {
+      grid-template-rows: 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    // TODO: trabajar mejor la separacion de los hexagonos
+    // column-gap: 1px;
+    align-items: center;
+
+    [hexagon] {
+      $size-height: 11px;
+      $size-width: 17px;
+
+      width: $size-width;
+      height: 0;
+
+      position: relative;
+      background-color: transparent;
+
+      border-bottom: $size-width solid $color-grey;
+      border-left: $size-height solid transparent;
+      border-right: $size-height solid transparent;
+
+      transform: rotate(-90deg);
+
+      &::after {
+        content: '';
+        width: $size-width;
+        height: 0;
+
+        position: absolute;
+        bottom: -($size-width * 2);
+        left: -$size-height;
+        right: 0;
+
+        border-top: $size-width solid $color-grey;
+        border-right: $size-height solid transparent;
+        border-left: $size-height solid transparent;
+      }
+    }
+  }
+
+  &::before {
+    @include animation-rotation(230deg, $delay: true);
+
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+
+    border: 5px solid #b9aead;
+    border-bottom: 5px solid $color-grey;
+    border-radius: 50%;
+  }
+
+  &::after {
+    @include animation-rotation(280deg);
+
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+
+    border: 5px solid transparent;
+    border-bottom: 5px solid #b9aead;
+    border-radius: 50%;
+  }
+}
