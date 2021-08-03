@@ -33,27 +33,30 @@
 }
 
 @mixin animation-hexagon {
-  $duration: 2.5;
+  $duration: 3;
 
   @for $i from 1 through 7 {
     [hexagon='#{$i}'] {
       @keyframes hexagon#{$i} {
-        from {
+        0% {
+          opacity: 0;
+          transform: rotate(-90deg) scale(0.3) translateY(20px);
+        }
+        50% {
           opacity: 1;
           transform: rotate(-90deg) scale(1);
         }
-        to {
+        100% {
           opacity: 0;
-          transform: rotate(-90deg) scale(0.2) translateY(20px);
+          transform: rotate(-90deg) scale(0.3) translateY(20px);
         }
       }
 
       animation-name: hexagon#{$i};
       animation-duration: #{$duration}s;
       animation-delay: #{$duration * ($i - 7) * 0.1}s;
-
       animation-iteration-count: infinite;
-      animation-fill-mode: both;
+      animation-fill-mode: forwards;
       animation-timing-function: ease;
     }
   }
@@ -94,7 +97,7 @@
     align-items: center;
 
     [hexagon] {
-      $size-height: 11px;
+      $size-height: 10px;
       $size-width: 17px;
 
       width: $size-width;
